@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Hythlodaeus</h1>
-        <img src="public/img/hytl.png" alt="imagen"/>
+        <!--<img src="public/img/hytl.png" alt="imagen"/>-->
+        <img src="public/<%= session.getId() %>/img/hytl.png" alt="imagen"/>
     </body>
 </html>

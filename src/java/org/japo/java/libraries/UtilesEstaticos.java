@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,7 +26,8 @@ public final class UtilesEstaticos {
     public static void procesarEstatico(
             HttpServletRequest request,
             HttpServletResponse response) throws IOException {
-        File fichero = localizarRecurso(request);
+//        File fichero = localizarRecurso(request);
+        File fichero = localizarRecursoPrivado(request);
 
         servirRecurso(fichero, response);
     }
@@ -41,6 +43,29 @@ public final class UtilesEstaticos {
 
         ruta = ruta.replace(peticion, servicio);
 
+        return new File(ruta);
+    }
+
+    private static File localizarRecursoPrivado(HttpServletRequest request) {
+        String base = "/WEB-INF/static";
+
+        HttpSession sesion = request.getSession();
+
+        String id = sesion.getId();
+
+        String ruta = request.getPathTranslated().replace("\\", "/");
+
+        if (ruta.contains(id)) {
+
+            String peticion = request.getPathInfo();
+
+            String servicio = base + peticion.replace("/" + id, "");
+
+            ruta = ruta.replace(peticion, servicio);
+
+        } else {
+            ruta = null;
+        }
         return new File(ruta);
     }
 

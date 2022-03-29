@@ -23,7 +23,7 @@ public final class UtilesEstaticos {
 
     }
 
-    public static void procesarEstatico(
+    public static void procesar(
             HttpServletRequest request,
             HttpServletResponse response) throws IOException {
         File fichero = localizarRecurso(request);

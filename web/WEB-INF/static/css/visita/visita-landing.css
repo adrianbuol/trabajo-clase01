@@ -1,34 +1,49 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 22 mar. 2022, 10:35:44
-    Author     : Adrián Bueno Olmedo <adrian.bueno.alum@iescamp.es>
-*/
-
-*, *:before, *::after{
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
 }
 
 html {
     font-size: 16px;
-    font-size: 2.5vh;
+    font-size: 3vh;
 }
 
-body{
+body {
     font-family: sans-serif;
 }
 
+/* --- */
+
 #container {
     height: 100vh;
+
+    background-color: darkgray;
+    background-image: linear-gradient(rgb(139, 226, 248), rgb(218, 255, 203));
+
+}
+
+/* --- */
+
+main {
+    height: 80vh;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
 }
+
+h1 {
+    margin-bottom: 2rem;
+
+    color: burlywood;
+    color: indianred;
+    font-size: 2.4rem;
+    text-align: center;
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.7);
+}
+

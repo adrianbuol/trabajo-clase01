@@ -25,28 +25,31 @@ import org.japo.java.libraries.UtilesServicios;
         name = "Controller",
         urlPatterns = {"", "/public/*"},
         initParams = {
-            @WebInitParam(
-                    name = "author",
-                    value = "Adrián Bueno Olmedo"),
-            @WebInitParam(
-                    name = "version",
-                    value = "0.1.0")
+            @WebInitParam(name = "author", value = "JAPO Labs"),
+            @WebInitParam(name = "version", value = "0.1.0")
         })
-public class Controller extends HttpServlet {
 
+public class Controller extends HttpServlet {
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Configuración
         ServletConfig config = getServletConfig();
-
+        
         if (request.getPathInfo().equals("/")) {
             if (request.getParameter("svc") != null) {
                 UtilesServicios.procesar(config, request, response);
             } else if (request.getParameter("cmd") != null) {
                 UtilesComandos.procesar(config, request, response);
             } else {
-                UtilesEstaticos.procesar(request, response);
+                // Página Predeterminada
+                response.sendRedirect("?cmd=visita-landing");
             }
+            
+        } else {
+            UtilesEstaticos.procesarEstatico(request, response);
         }
+        
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

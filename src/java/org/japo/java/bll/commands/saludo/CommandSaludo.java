@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.japo.java.bll.commands.saludos;
+package org.japo.java.bll.commands.saludo;
 
+import java.io.IOException;
+import javax.servlet.ServletException;
 import org.japo.java.bll.commands.Command;
-import org.japo.java.bll.commands.ICommand;
 
 /**
  *
@@ -15,17 +16,12 @@ import org.japo.java.bll.commands.ICommand;
 public class CommandSaludo extends Command {
 
     @Override
-    public void process() {
+    public void process() throws ServletException, IOException {
         // Salida
         String out = "saludo/saludo";
-        
-        // Redirección
-        
-    }
 
-    @Override
-    public ICommand obtenerComando(String cmdName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Redirección
+        forward(out);
     }
 
 }

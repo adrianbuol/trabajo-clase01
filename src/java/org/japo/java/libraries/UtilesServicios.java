@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public final class UtilesServicios {
 
-    private UtilesServicios() {
+    public UtilesServicios() {
     }
 
     public static void procesar(
@@ -23,6 +23,7 @@ public final class UtilesServicios {
             HttpServletRequest request,
             HttpServletResponse response) {
 
+        //--
     }
 
 }

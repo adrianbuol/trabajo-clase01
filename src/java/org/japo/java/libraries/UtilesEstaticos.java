@@ -20,15 +20,13 @@ import javax.servlet.http.HttpSession;
 public final class UtilesEstaticos {
 
     private UtilesEstaticos() {
-
     }
 
-    public static void procesar(
+    public static void procesarEstatico(
             HttpServletRequest request,
             HttpServletResponse response) throws IOException {
         File fichero = localizarRecurso(request);
-//        File fichero = localizarRecursoPrivado(request);
-
+//        File fichero = localizarRecursoPrivado(request); Para ver la id de sesion
         servirRecurso(fichero, response);
     }
 
@@ -46,6 +44,7 @@ public final class UtilesEstaticos {
         return new File(ruta);
     }
 
+    // Para ver la id de sesión en prueba-privada.jsp
     private static File localizarRecursoPrivado(HttpServletRequest request) {
         String base = "/WEB-INF/static";
 
@@ -56,30 +55,32 @@ public final class UtilesEstaticos {
         String ruta = request.getPathTranslated().replace("\\", "/");
 
         if (ruta.contains(id)) {
-
             String peticion = request.getPathInfo();
 
             String servicio = base + peticion.replace("/" + id, "");
 
             ruta = ruta.replace(peticion, servicio);
-
         } else {
             ruta = null;
         }
+
         return new File(ruta);
     }
 
-    private static void servirRecurso(File fichero, HttpServletResponse response)
+    private static void servirRecurso(
+            File fichero,
+            HttpServletResponse response)
             throws IOException {
         byte[] buffer = new byte[(int) fichero.length()];
 
         try (
                 FileInputStream origen = new FileInputStream(fichero);
-                ServletOutputStream destino = response.getOutputStream();) {
+                ServletOutputStream destino = response.getOutputStream()) {
             // Origen > Buffer
             origen.read(buffer);
             // Buffer > Destino
             destino.write(buffer);
         }
     }
+
 }

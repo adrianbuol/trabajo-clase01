@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.japo.java.bll.commands.saludo;
+package org.japo.java.bll.commands.usuario;
 
+import org.japo.java.bll.commands.visita.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import org.japo.java.bll.commands.Command;
@@ -13,12 +14,12 @@ import org.japo.java.bll.commands.Command;
  *
  * @author Adrián Bueno Olmedo <adrian.bueno.alum@iescamp.es>
  */
-public class CommandSaludo extends Command {
+public class CommandVisitaLanding extends Command {
 
     @Override
     public void process() throws ServletException, IOException {
         // Salida
-        String out = "saludo/saludo";
+        String out = "visita/visita-landing";
 
         // Redirección
         forward(out);

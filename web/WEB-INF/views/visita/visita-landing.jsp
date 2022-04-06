@@ -14,7 +14,8 @@
     </head>
     <body>
         <div id="container">
-            <h1>Estás en Visita</h1>
+            <h1>Aplicación Excelente</h1>
+            <a href="?cmd=usuario-login">Identificación</a>
             <img src="public/img/hytl.png" alt="imagen"/>
         </div>
     </body>

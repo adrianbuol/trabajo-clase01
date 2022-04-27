@@ -47,3 +47,21 @@ h1 {
     text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.7);
 }
 
+/* --- */
+header {
+    display: flex;
+    flex-direction: column;
+    height: 15vh;
+    text-align: center;
+    background-color: rgb(139, 226, 248);
+    border-bottom: 1px rgb(255, 226, 255) solid;
+}
+header h1 {
+    margin: 0;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    border-top: 1px rgb(255, 226, 255) solid;
+}

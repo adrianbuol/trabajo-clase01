@@ -14,9 +14,13 @@
     </head>
     <body>
         <div id="container">
-            <h1>Aplicación Excelente</h1>
-            <a href="?cmd=usuario-login">Identificación</a>
-            <img src="public/img/hytl.png" alt="imagen"/>
+            <%@include file="../partials/header.jspf" %>
+            <main>
+                <!--<h1>Aplicación Excelente</h1>-->
+                <a href="?cmd=usuario-login">Identificación</a>
+                <img src="public/img/hytl.png" alt="imagen"/>
+            </main>
+            <%@include file="../partials/footer.jspf" %>
         </div>
     </body>
 </html>

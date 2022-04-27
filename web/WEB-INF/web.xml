@@ -8,4 +8,12 @@
         <param-name>ruta-vistas</param-name>
         <param-value>/WEB-INF/views</param-value>
     </context-param>
+    <context-param>
+        <param-name>base-datos</param-name>
+        <param-value>web_app</param-value>
+    </context-param>
+    <context-param>
+        <param-name>apso-inactividad</param-name>
+        <param-value>1800</param-value>
+    </context-param>
 </web-app>

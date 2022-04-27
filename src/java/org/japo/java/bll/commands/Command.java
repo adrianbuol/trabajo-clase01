@@ -11,6 +11,8 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.japo.java.entities.Usuario;
 
 /**
  *
@@ -55,4 +57,22 @@ public abstract class Command implements ICommand {
         }
     }
 
+    protected boolean validarSesion(HttpServletRequest request) {
+        // Semaforo Validación
+        boolean checkOK = false;
+
+        // Request > Sesion
+        HttpSession sesion = request.getSession(false);
+
+        // Validación
+        if (sesion != null) {
+            Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+            if (usuario != null) {
+                // Se debería comprobar la existencia del usuario 
+                // de la sesion en la base de datos
+                checkOK = true;
+            }
+        }
+        return checkOK;
+    }
 }

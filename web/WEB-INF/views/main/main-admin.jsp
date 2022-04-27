@@ -3,13 +3,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pagina Principal</title>
         <link rel="stylesheet" href="public/css/message/credencial-incorrecta.css"/>
     </head>
     <body>
         <div id="container">
-            <h2>Credencial Correcta</h2>
-            <p>Mu' bien</p>
+            <h2>Pagina Principal</h2>
+            <p>Página Principal Administrador</p>
             <a href="?cmd=usuario-login">Continuar</a>
         </div>
     </body>

@@ -1,4 +1,4 @@
-<%@page import="org.japo.java.libraries.UtilesEntidad"%>
+<%@page import="org.japo.java.libraries.UtilesUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,11 +16,11 @@
                   accept-charset="ISO-8859-1">
                 <div class="fieldset">
                     <label for="user">Nombre de Usuario</label>
-                    <input type="text" id="user" name="user" pattern="<%= UtilesEntidad.REG_USER%>">
+                    <input type="text" id="user" name="user" pattern="<%= UtilesUsuarios.REG_USER%>">
                 </div>
                 <div class="fieldset">
                     <label for="pass">Contraseña</label>
-                    <input type="password" id="pass" name="pass" pattern="<%= UtilesEntidad.REG_PASS%>">
+                    <input type="password" id="pass" name="pass" pattern="<%= UtilesUsuarios.REG_PASS%>">
                 </div>
                 <div class="buttonset">
                     <input type="submit" value="Enviar">

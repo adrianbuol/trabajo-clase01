@@ -2,55 +2,69 @@ package org.japo.java.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
-import org.japo.java.libraries.UtilesEntidad;
+import org.japo.java.libraries.UtilesPerfiles;
+import org.japo.java.libraries.UtilesUsuarios;
 
+/**
+ *
+ * @author Adrián Bueno Olmedo <adrian.bueno.alum@iescamp.es>
+ */
 public final class Usuario implements Serializable {
 
+    //Campos
     private int id;
     private String user;
     private String pass;
     private String avatar;
+    private int perfil;
+    private String perfilInfo;
 
     public Usuario() {
-        id = UtilesEntidad.DEF_ID;
-        user = UtilesEntidad.DEF_USER;
-        pass = UtilesEntidad.DEF_PASS;
-        avatar = UtilesEntidad.DEF_AVATAR;
+        id = UtilesUsuarios.DEF_ID;
+        user = UtilesUsuarios.DEF_USER;
+        pass = UtilesUsuarios.DEF_PASS;
+        avatar = UtilesUsuarios.DEF_AVATAR;
+        perfil = UtilesPerfiles.DEF_ID;
+        perfilInfo = UtilesPerfiles.DEF_INFO;
+
     }
 
-    public Usuario(int id, String user, String pass, String avatar) {
-        if (validarID()) {
+    public Usuario(int id, String user, String pass, String avatar, int perfil, String perfilInfo) {
+        if (UtilesUsuarios.validarId(id)) {
             this.id = id;
         } else {
-            this.id = UtilesEntidad.DEF_ID;
+            this.id = UtilesUsuarios.DEF_ID;
         }
-        if (validarUser()) {
+
+        if (UtilesUsuarios.validarUser(user)) {
             this.user = user;
         } else {
-            this.user = UtilesEntidad.DEF_USER;
+            this.user = UtilesUsuarios.DEF_USER;
         }
-        if (validarPass()) {
+
+        if (UtilesUsuarios.validarPass(pass)) {
             this.pass = pass;
         } else {
-            this.pass = UtilesEntidad.DEF_PASS;
+            this.pass = UtilesUsuarios.DEF_PASS;
         }
-        if (validarAvatar()) {
+
+        if (UtilesUsuarios.validarAvatar(avatar)) {
             this.avatar = avatar;
         } else {
-            this.avatar = UtilesEntidad.DEF_AVATAR;
+            this.avatar = UtilesUsuarios.DEF_AVATAR;
         }
 
-        this.user = user;
-        this.pass = pass;
-        this.avatar = avatar;
-    }
+        if (UtilesPerfiles.validarId(perfil)) {
+            this.perfil = perfil;
+        } else {
+            this.perfil = UtilesPerfiles.DEF_ID;
+        }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+        if (UtilesPerfiles.validarInfo(perfilInfo)) {
+            this.perfilInfo = perfilInfo;
+        } else {
+            this.perfilInfo = UtilesPerfiles.DEF_INFO;
+        }
     }
 
     public int getId() {
@@ -58,7 +72,9 @@ public final class Usuario implements Serializable {
     }
 
     public void setId(int id) {
-        this.id = id;
+        if (validarId()) {
+            this.id = id;
+        }
     }
 
     public String getUser() {
@@ -66,7 +82,9 @@ public final class Usuario implements Serializable {
     }
 
     public void setUser(String user) {
-        this.user = user;
+        if (validarUser()) {
+            this.user = user;
+        }
     }
 
     public String getPass() {
@@ -74,23 +92,64 @@ public final class Usuario implements Serializable {
     }
 
     public void setPass(String pass) {
-        this.pass = pass;
+        if (validarPass()) {
+            this.pass = pass;
+        }
     }
 
-    private boolean validarID() {
-        return UtilesEntidad.validarID(id);
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        if (validarAvatar()) {
+            this.avatar = avatar;
+        }
+    }
+
+    public int getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(int perfil) {
+        if (validarPerfil()) {
+            this.perfil = perfil;
+        }
+    }
+
+    public String getPerfilInfo() {
+        return perfilInfo;
+    }
+
+    public void setPerfilInfo(String perfilInfo) {
+        if (validarPerfilInfo()) {
+            this.perfilInfo = perfilInfo;
+        }
+    }
+
+    private boolean validarId() {
+        return UtilesUsuarios.validarId(id);
     }
 
     private boolean validarUser() {
-        return UtilesEntidad.validarUser(user);
+        return UtilesUsuarios.validarUser(user);
     }
 
     private boolean validarPass() {
-        return UtilesEntidad.validarPass(pass);
+        return UtilesUsuarios.validarPass(pass);
     }
 
     private boolean validarAvatar() {
-        return UtilesEntidad.validarAvatar(avatar);
+        return UtilesUsuarios.validarAvatar(avatar);
+    }
+
+    private boolean validarPerfil() {
+        return UtilesPerfiles.validarId(perfil);
+    }
+
+    private boolean validarPerfilInfo() {
+        return UtilesPerfiles.validarInfo(perfilInfo);
+
     }
 
     @Override
@@ -98,21 +157,27 @@ public final class Usuario implements Serializable {
         boolean testOK = false;
         if (o instanceof Usuario) {
             Usuario u = (Usuario) o;
-            testOK = id == u.getId()
+            testOK
+                    = id == u.getId()
                     && user.equals(u.getUser())
                     && pass.equals(u.getPass())
-                    && avatar.equals(u.getAvatar());
+                    && avatar.equals(u.getAvatar())
+                    && perfil == u.getPerfil()
+                    && perfilInfo.equals(u.getPerfilInfo());
+
         }
         return testOK;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + this.id;
-        hash = 67 * hash + Objects.hashCode(this.user);
-        hash = 67 * hash + Objects.hashCode(this.pass);
-        hash = 67 * hash + Objects.hashCode(this.avatar);
+        int hash = 3;
+        hash = 59 * hash + this.id;
+        hash = 59 * hash + Objects.hashCode(this.user);
+        hash = 59 * hash + Objects.hashCode(this.pass);
+        hash = 59 * hash + Objects.hashCode(this.avatar);
+        hash = 59 * hash + this.perfil;
+        hash = 59 * hash + Objects.hashCode(this.perfilInfo);
         return hash;
     }
 

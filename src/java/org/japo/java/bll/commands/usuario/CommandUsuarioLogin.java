@@ -54,10 +54,12 @@ public class CommandUsuarioLogin extends Command {
                 }
 
             } else {
-                out = "message/operación-desconocida";
+                out = "message/operacion-desconocida";
+
             }
+
         }
-        
+
         // Redirección
         forward(out);
     }

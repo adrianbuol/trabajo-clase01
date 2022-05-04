@@ -5,42 +5,42 @@
  */
 package org.japo.java.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
-import org.japo.java.libraries.UtilesPerfiles;
+import org.japo.java.libraries.UtilesEspecialidades;
 
 /**
  *
  * @author Adrián Bueno Olmedo <adrian.bueno.alum@iescamp.es>
  */
-public final class Perfil {
+public final class Especialidad implements Serializable {
 
-    //Campos
+    // Campos
     private int id;
     private String nombre;
     private String info;
 
-    public Perfil() {
-        this.id = UtilesPerfiles.DEF_ID;
-        this.nombre = UtilesPerfiles.DEF_NOMBRE;
-        this.info = UtilesPerfiles.DEF_INFO;
-
+    public Especialidad() {
+        id = UtilesEspecialidades.DEF_ID;
+        nombre = UtilesEspecialidades.DEF_NOMBRE;
+        info = UtilesEspecialidades.DEF_INFO;
     }
 
-    public Perfil(int id, String nombre, String info) {
-        if (validarId()) {
+    public Especialidad(int id, String nombre, String info) {
+        if (UtilesEspecialidades.validarId(id)) {
             this.id = id;
         } else {
-            this.id = UtilesPerfiles.DEF_ID;
+            this.id = UtilesEspecialidades.DEF_ID;
         }
-        if (validarNombre()) {
+        if (UtilesEspecialidades.validarNombre(nombre)) {
             this.nombre = nombre;
         } else {
-            this.nombre = UtilesPerfiles.DEF_NOMBRE;
+            this.nombre = UtilesEspecialidades.DEF_NOMBRE;
         }
-        if (validarInfo()) {
+        if (UtilesEspecialidades.validarInfo(info)) {
             this.info = info;
         } else {
-            this.info = UtilesPerfiles.DEF_INFO;
+            this.info = UtilesEspecialidades.DEF_INFO;
         }
     }
 
@@ -49,7 +49,7 @@ public final class Perfil {
     }
 
     public void setId(int id) {
-        if (validarId()) {
+        if (UtilesEspecialidades.validarId(id)) {
             this.id = id;
         }
     }
@@ -59,7 +59,7 @@ public final class Perfil {
     }
 
     public void setNombre(String nombre) {
-        if (validarNombre()) {
+        if (UtilesEspecialidades.validarNombre(nombre)) {
             this.nombre = nombre;
         }
     }
@@ -69,42 +69,29 @@ public final class Perfil {
     }
 
     public void setInfo(String info) {
-        if (validarInfo()) {
+        if (UtilesEspecialidades.validarInfo(info)) {
             this.info = info;
         }
-    }
-
-    private boolean validarId() {
-        return UtilesPerfiles.validarId(id);
-    }
-
-    private boolean validarNombre() {
-        return UtilesPerfiles.validarNombre(nombre);
-    }
-
-    private boolean validarInfo() {
-        return UtilesPerfiles.validarInfo(info);
     }
 
     @Override
     public boolean equals(Object o) {
         boolean testOK = false;
-        if (o instanceof Perfil) {
-            Perfil e = (Perfil) o;
+        if (o instanceof Especialidad) {
+            Especialidad e = (Especialidad) o;
             testOK = id == e.getId()
                     && nombre.equals(e.getNombre())
                     && info.equals(e.getInfo());
         }
         return testOK;
     }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + this.id;
-        hash = 59 * hash + Objects.hashCode(this.nombre);
-        hash = 59 * hash + Objects.hashCode(this.info);
+        int hash = 7;
+        hash = 37 * hash + this.id;
+        hash = 37 * hash + Objects.hashCode(this.nombre);
+        hash = 37 * hash + Objects.hashCode(this.info);
         return hash;
     }
-
-
 }

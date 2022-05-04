@@ -34,7 +34,7 @@ body {
 
 #container form {
     padding: 0 1rem;
-
+     
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,7 +52,7 @@ body {
 #container form  label {
     width: 10rem;
     align-items: center;
-
+    
 }
 
 #container form .fieldset input {
@@ -64,7 +64,7 @@ body {
 #container form .buttonset input {
     width: 12rem;
     height: 2rem;
-
+    
     background-color: #eee;
     border: solid .1rem #333;
     border-radius: .2rem;

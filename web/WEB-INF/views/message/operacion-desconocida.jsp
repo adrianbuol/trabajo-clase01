@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="public/css/message/credencial-incorrecta.css"/>
+        <link rel="stylesheet" href="public/css/message/message.css"/>
     </head>
     <body>
         <div id="container">

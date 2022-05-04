@@ -30,12 +30,13 @@ import org.japo.java.libraries.UtilesServicios;
         })
 
 public class Controller extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Configuración
         ServletConfig config = getServletConfig();
-        
+
+//        throw new ServletException("Excepción Manual");
         if (request.getPathInfo().equals("/")) {
             if (request.getParameter("svc") != null) {
                 UtilesServicios.procesar(config, request, response);
@@ -45,11 +46,11 @@ public class Controller extends HttpServlet {
                 // Página Predeterminada
                 response.sendRedirect("?cmd=visita-landing");
             }
-            
+
         } else {
             UtilesEstaticos.procesarEstatico(request, response);
         }
-        
+
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
